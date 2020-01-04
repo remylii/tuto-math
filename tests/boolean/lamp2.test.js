@@ -1,7 +1,12 @@
 const check = require("../../src/boolean/lamp2");
 
-test(`Blue: true, Yellow: true should return true`, () => {
-  const blue = true;
-  const yellow = true;
-  expect(check(blue, yellow)).toBe(true);
+describe(`check()`, () => {
+  it.each([
+    [true, true, true],
+    [true, false, false],
+    [false, true, true],
+    [false, false, true]
+  ])(`return `, (a, b, expected) => {
+    expect(check(a, b)).toBe(expected);
+  });
 });
